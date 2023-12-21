@@ -1,5 +1,5 @@
 const app = require('./app');
-require('dotenv').config({ path: './backend/env/.env'});
+require('dotenv').config();
 
 app.get('/', (req, res) => {
   res.json('¡Hola, mundo con Expresssssssssss!');
