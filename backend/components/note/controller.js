@@ -191,3 +191,35 @@ module.exports.putNoteID = async (req, res) => {
     })
   }
 }
+
+module.exports.deleteNoteID = async (req, res) => {
+  const { id } = req.params
+
+  try {
+    const element = await prisma.notes.delete({
+      where: {
+        id: parseInt(id)
+      }
+    })
+
+    if (element) {
+      res.status(200).json({
+        ok: true,
+        message: `Note with id ${id} deleted`,
+        note: element
+      })
+    } else {
+      res.status(404).json({
+        ok: false,
+        message: `Note with id ${id} not found`
+      })
+    }
+
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      message: 'Something went wrong',
+      error: error.message
+    })
+  }
+}
