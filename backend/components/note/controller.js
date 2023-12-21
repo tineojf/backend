@@ -2,22 +2,28 @@ const { PrismaClient } = require('@prisma/client')
 
 const prisma = new PrismaClient()
 
-module.exports.postNotes = async (
-  req, res
-) => {
+module.exports.postNote = async (req, res) => {
   const { description, isArchive } = req.body
   try {
-    const element = await prisma.notes.create({
+    const elements = await prisma.notes.create({
       data: {
         description: description,
         isArchive: isArchive
       }
     })
-    res.status(201).json({
-      ok: true,
-      message: 'Note created successfully',
-      note: element
-    })
+
+    if (elements === null) {
+      res.status(400).json({
+        ok: false,
+        message: 'Notes not created'
+      })
+    } else {
+      res.status(201).json({
+        ok: true,
+        message: 'Note created successfully',
+        note: elements
+      })
+    }
   } catch (error) {
     res.status(500).json({
       ok: false,
@@ -27,17 +33,16 @@ module.exports.postNotes = async (
   }
 }
 
-module.exports.getNotes = async (
-  req, res
-) => {
+module.exports.getNotes = async (req, res) => {
   try {
     const elements = await prisma.notes.findMany()
 
     res.status(200).json({
       ok: true,
-      message: 'Notes retrieved successfully',
+      message: 'All notes retrieved',
       notes: elements
     })
+
   } catch (error) {
     res.status(500).json({
       ok: false,
@@ -46,3 +51,36 @@ module.exports.getNotes = async (
     })
   }
 }
+
+module.exports.getNoteID = async (req, res) => {
+  const { id } = req.params
+
+  try {
+    const element = await prisma.notes.findUnique({
+      where: {
+        id: parseInt(id)
+      }
+    })
+
+    if (element) {
+      res.status(200).json({
+        ok: true,
+        message: `Note with id ${id} retrieved`,
+        note: element
+      })
+    } else {
+      res.status(404).json({
+        ok: false,
+        message: `Note with id ${id} not found`
+      })
+    }
+
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      message: 'Something went wrong',
+      error: error.message
+    })
+  }
+}
+
