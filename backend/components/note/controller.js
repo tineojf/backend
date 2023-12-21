@@ -60,7 +60,7 @@ module.exports.getNoteID = async (req, res) => {
   try {
     const element = await prisma.notes.findUnique({
       where: {
-        id: parseInt(id)
+        id: parseInt(id, 10)
       }
     })
 
@@ -85,6 +85,68 @@ module.exports.getNoteID = async (req, res) => {
     })
   }
 }
+
+module.exports.getNoteArchive = async (req, res) => {
+  try {
+    const elements = await prisma.notes.findMany({
+      where: {
+        isArchive: true
+      }
+    });
+
+    if (elements.length === 0) {
+      return res.status(200).json({
+        ok: true,
+        message: 'No se encontraron notas archivadas',
+        notes: elements
+      });
+    }
+
+    return res.status(200).json({
+      ok: true,
+      message: 'Todas las notas archivadas recuperadas',
+      notes: elements
+    });
+
+  } catch (error) {
+    return res.status(500).json({
+      ok: false,
+      message: 'Algo salió mal',
+      error: error.message
+    });
+  }
+};
+
+module.exports.getNoteNotArchive = async (req, res) => {
+  try {
+    const elements = await prisma.notes.findMany({
+      where: {
+        isArchive: false
+      }
+    });
+
+    if (elements.length === 0) {
+      return res.status(404).json({
+        ok: false,
+        message: 'No se encontraron notas'
+      });
+    }
+
+    res.status(200).json({
+      ok: true,
+      message: 'Todas las notas no archivadas recuperadas',
+      notes: elements
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      message: 'Algo salió mal',
+      error: error.message
+    });
+  }
+}
+
 
 module.exports.putNoteID = async (req, res) => {
   const { id } = req.params
