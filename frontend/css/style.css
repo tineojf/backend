@@ -127,7 +127,6 @@ section.list-notes > div > div > h6 {
   text-transform: lowercase;
 }
 
-/* mediaquery min 768 */
 @media (min-width: 768px) {
   body {
     padding: 50px;
@@ -146,8 +145,10 @@ section.list-notes > div > div > h6 {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+
     padding: 20px;
     width: 60vw;
+    margin-top: 20px;
   }
 
   section.create-note > div:nth-child(2) {
