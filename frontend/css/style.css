@@ -1,6 +1,7 @@
 :root {
   --primary-color: #f0bd13;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -50,6 +51,9 @@ section.create-note {
   background-color: #d7d7d7;
   border-radius: 20px;
 }
+section.create-note:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
 
 section.create-note > div:nth-child(2) {
   display: flex;
@@ -92,7 +96,9 @@ section.list-notes > div {
   padding: 15px;
 
   background-color: var(--primary-color);
+  border: none;
   border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 section.list-notes > div > div > p {
@@ -102,6 +108,9 @@ section.list-notes > div > div > p {
 section.list-notes > div > div > a {
   text-decoration: none;
   font-weight: bold;
+}
+section.list-notes > div > div > a:hover {
+  text-decoration: underline;
 }
 
 section.list-notes > div > div > a.btn-archive {
