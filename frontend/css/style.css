@@ -213,4 +213,9 @@ section.list-notes > div > div > h6 {
     justify-content: space-around;
     align-items: center;
   }
+
+  section.list-notes > div {
+    width: 20vw !important;
+    margin: 15px;
+  }
 }
