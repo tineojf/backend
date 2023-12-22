@@ -1,3 +1,6 @@
+:root {
+  --primary-color: #f0bd13;
+}
 * {
   margin: 0;
   padding: 0;
@@ -45,7 +48,7 @@ section.create-note {
   margin: 15px auto;
   padding: 15px;
 
-  background-color: rgb(215, 215, 215);
+  background-color: #d7d7d7;
   border-radius: 20px;
 }
 
@@ -64,4 +67,54 @@ section.create-note > div:nth-child(2) > div > label {
 
 section.create-note > div:nth-child(2) > button {
   margin-top: 10px;
+}
+
+section.list-notes {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
+
+  margin: 15px;
+}
+
+section.list-notes > div {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
+
+  width: 70vw;
+  margin: 15px auto;
+  padding: 15px;
+
+  background-color: var(--primary-color);
+  border-radius: 12px;
+}
+
+section.list-notes > div > div > p {
+  text-align: justify;
+}
+
+section.list-notes > div > div > a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+section.list-notes > div > div > a.btn-archive {
+  color: #29362c;
+}
+
+section.list-notes > div > div > a.btn-delete {
+  color: #ec2323;
+}
+
+section.list-notes > div > div > h6 {
+  font-size: 0.8rem;
+  text-align: right;
+  text-transform: lowercase;
 }
