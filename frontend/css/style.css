@@ -172,3 +172,45 @@ section.list-notes > div > div > h6 {
     margin: 15px;
   }
 }
+
+/* media query min 1024 */
+@media (min-width: 1024px) {
+  body {
+    padding: 50px;
+  }
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  header > div > button {
+    width: 12rem;
+  }
+
+  section.create-note {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+    width: 40vw;
+    margin-top: 20px;
+  }
+
+  section.create-note > div:nth-child(2) {
+    margin-left: 50px;
+  }
+
+  section.create-note > div:nth-child(2) > button {
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+  section.list-notes {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
