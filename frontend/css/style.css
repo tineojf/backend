@@ -214,7 +214,7 @@ section.list-notes > div > div > h6 {
     align-items: center;
   }
 
-  section.list-notes > div {
+  section.list-notes > div.card {
     width: 20vw !important;
     margin: 15px;
   }
