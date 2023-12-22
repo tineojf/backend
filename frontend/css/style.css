@@ -2,7 +2,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #ababab; /* delete; */
+  /* background-color: #ababab; */
+}
+
+button.btn-primary {
+  background-color: #1a3993;
 }
 
 header {
@@ -23,4 +27,41 @@ header > h1 {
 header > div > button {
   width: 9rem;
   margin: 0 10px;
+}
+
+header > div > button.btn-secondary {
+  background-color: #373636;
+}
+
+section.create-note {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
+
+  width: 70vw;
+  margin: 15px auto;
+  padding: 15px;
+
+  background-color: rgb(215, 215, 215);
+  border-radius: 20px;
+}
+
+section.create-note > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
+}
+
+section.create-note > div:nth-child(2) > div > label {
+  margin-left: 5px;
+}
+
+section.create-note > div:nth-child(2) > button {
+  margin-top: 10px;
 }
