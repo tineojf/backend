@@ -1,5 +1,5 @@
 :root {
-  --primary-color: #f0bd13;
+  --primary-color: #ecc74d;
 }
 
 * {
@@ -48,7 +48,7 @@ section.create-note {
   margin: 15px auto;
   padding: 15px;
 
-  background-color: #d7d7d7;
+  background-color: #e8e2e2;
   border-radius: 20px;
 }
 section.create-note:hover {
@@ -74,13 +74,13 @@ section.create-note > div:nth-child(2) > button {
 
 section.list-notes {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  align-content: stretch;
+  align-content: center;
 
-  margin: 15px;
+  margin: 60px;
 }
 
 section.list-notes > div {
@@ -125,4 +125,49 @@ section.list-notes > div > div > h6 {
   font-size: 0.8rem;
   text-align: right;
   text-transform: lowercase;
+}
+
+/* mediaquery min 768 */
+@media (min-width: 768px) {
+  body {
+    padding: 50px;
+  }
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  header > div > button {
+    width: 12rem;
+  }
+
+  section.create-note {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 60vw;
+  }
+
+  section.create-note > div:nth-child(2) {
+    margin-left: 50px;
+  }
+
+  section.create-note > div:nth-child(2) > button {
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+  section.list-notes {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  section.list-notes > div {
+    width: 30vw;
+    margin: 15px;
+  }
 }
