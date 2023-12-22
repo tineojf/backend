@@ -83,7 +83,7 @@ section.list-notes {
   margin: 60px;
 }
 
-section.list-notes > div {
+section.list-notes > div.card {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -121,9 +121,9 @@ section.list-notes > div > div > a.btn-delete {
   color: #ec2323;
 }
 
-section.list-notes > div > div > h6 {
+section.list-notes > div > div > p.txt-time {
   font-size: 0.8rem;
-  text-align: right;
+  text-align: left;
   text-transform: lowercase;
 }
 
