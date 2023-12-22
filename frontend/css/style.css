@@ -105,19 +105,25 @@ section.list-notes > div > div > p {
   text-align: justify;
 }
 
-section.list-notes > div > div > a {
+section.list-notes > div > div > div {
+  margin-top: 20px;
+  text-align: right;
+}
+
+section.list-notes > div > div > div a {
   text-decoration: none;
   font-weight: bold;
+  text-align: right;
 }
-section.list-notes > div > div > a:hover {
+section.list-notes > div > div > div > a:hover {
   text-decoration: underline;
 }
 
-section.list-notes > div > div > a.btn-archive {
+section.list-notes > div > div > div > a.btn-archive {
   color: #29362c;
 }
 
-section.list-notes > div > div > a.btn-delete {
+section.list-notes > div > div > div > a.btn-delete {
   color: #ec2323;
 }
 
