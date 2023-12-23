@@ -19,6 +19,38 @@ async function getNotes() {
   }
 }
 
+async function postNotes() {
+  const noteContent = document.getElementById('txtarea-createNote').value;
+  const isArchive = document.getElementById('cbox-createNote').checked;
+  console.log(noteContent, isArchive)
+
+  const body = {
+    description: noteContent,
+    isArchive: isArchive,
+  };
+
+  try {
+    const response = await fetch(API_NOTES, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      }, body: JSON.stringify(body),
+    });
+    console.log(body)
+
+    if (!response.ok) {
+      throw new Error(`Error en la solicitud: ${response.status}`);
+    }
+
+    const note = await response.json();
+    return note;
+  }
+  catch (error) {
+    console.error('Error al crear notas:', error);
+    throw error;
+  }
+}
+
 async function main() {
   try {
     const notes = await getNotes();
@@ -47,6 +79,19 @@ async function main() {
     console.error('Error en la aplicación:', error);
   }
 }
+
+const btnCreateNote = document.getElementById('btn-createNote');
+btnCreateNote.addEventListener('click', async (event) => {
+  event.preventDefault();
+
+  try {
+    const note = await postNotes();
+    console.log(note);
+    main();
+  } catch (error) {
+    console.error('Error al crear nota:', error);
+  }
+});
 
 function dateConverter(fechaISO) {
   const dateUTC = new Date(fechaISO);

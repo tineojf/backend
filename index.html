@@ -29,12 +29,12 @@
 
     <section class="create-note">
       <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label"
+        <label for="txtarea-createNote" class="form-label"
           >Create a new note</label
         >
         <textarea
           class="form-control"
-          id="exampleFormControlTextarea1"
+          id="txtarea-createNote"
           rows="3"
         ></textarea>
       </div>
@@ -45,14 +45,16 @@
             class="form-check-input"
             type="checkbox"
             value=""
-            id="flexCheckDefault"
+            id="cbox-createNote"
           />
-          <label class="form-check-label" for="flexCheckDefault">
+          <label class="form-check-label" for="cbox-createNote">
             Archive note?
           </label>
         </div>
 
-        <button type="button" class="btn btn-primary">Create</button>
+        <button type="button" class="btn btn-primary" id="btn-createNote">
+          Create
+        </button>
       </div>
     </section>
 
