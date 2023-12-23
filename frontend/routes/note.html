@@ -27,16 +27,22 @@
     </header>
 
     <section class="list-notes" id="list-notes">
-      <div class="card" style="width: 18rem">
+      <div class="card" style="width: 18rem" id="card">
         <div class="card-body">
-          <p class="card-text">
-            Content: Some quick example text to build on the card title and make
-            up the bulk of the card's content.
+          <p class="card-text">${nota.description}</p>
+          <p class="card-subtitle mb-2 text-muted txt-time">
+            Created At: ${dateConverter(nota.createdAt)}
           </p>
-          <p class="card-subtitle mb-2 text-muted txt-time">Date and Time</p>
+          <p class="card-subtitle mb-2 text-muted txt-time">
+            Updated At: ${dateConverter(nota.createdAt)}
+          </p>
           <div>
-            <a href="#" class="card-link btn-edit">Edit</a>
-            <a href="#" class="card-link btn-delete">Delete</a>
+            <a href="" class="card-link btn-update" id="btnUpdate-${nota.id}"
+              >Update</a
+            >
+            <a href="" class="card-link btn-delete" id="btnDelete-${nota.id}"
+              >Delete</a
+            >
           </div>
         </div>
       </div>

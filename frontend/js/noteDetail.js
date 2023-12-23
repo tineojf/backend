@@ -35,18 +35,25 @@ async function main() {
     })
 
     const notaHTML = `
-        <div class="card" style="width: 18rem">
-          <div class="card-body">
-            <p class="card-text">
-              ${nota.description}
-            </p>
-            <p class="card-subtitle mb-2 text-muted txt-time">${dateConverter(nota.createdAt)}</p>
-            <div>
-              <a href="/frontend/routes/note.html" class="card-link btn-more" id="btnMore-${nota.id}">More</a>
-              <a href="" class="card-link btn-delete" id="btnDelete-${nota.id}">Delete</a>
-            </div>
+      <div class="card" style="width: 18rem">
+        <div class="card-body">
+          <p class="card-text">${nota.description}</p>
+          <p class="card-subtitle mb-2 text-muted txt-time">
+            Created At: ${dateConverter(nota.createdAt)}
+          </p>
+          <p class="card-subtitle mb-2 text-muted txt-time">
+            Updated At: ${dateConverter(nota.createdAt)}
+          </p>
+          <div>
+            <a href="" class="card-link btn-update" id="btnUpdate-${nota.id}"
+              >Update</a
+            >
+            <a href="" class="card-link btn-delete" id="btnDelete-${nota.id}"
+              >Delete</a
+            >
           </div>
         </div>
+      </div>
       `;
 
     listaNotes.innerHTML = notaHTML;

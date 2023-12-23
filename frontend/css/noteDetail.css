@@ -47,7 +47,11 @@ section.list-notes {
   margin: 60px;
 }
 
-section.list-notes > div.card {
+section#list-notes > div {
+  background-color: var(--primary-color);
+}
+
+section#list-notes > #card {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -55,7 +59,6 @@ section.list-notes > div.card {
   align-items: stretch;
   align-content: stretch;
 
-  width: 70vw;
   margin: 15px auto;
   padding: 15px;
 
@@ -83,7 +86,7 @@ section.list-notes > div > div > div > a:hover {
   text-decoration: underline;
 }
 
-section.list-notes > div > div > div > a.btn-edit {
+section.list-notes > div > div > div > a.btn-update {
   color: #29362c;
 }
 
@@ -111,15 +114,14 @@ section.list-notes > div > div > p.txt-time {
     width: 12rem;
   }
 
-  section.list-notes {
+  section#list-notes {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
   }
 
-  section.list-notes > div {
-    width: 30vw;
+  section#list-notes > .card {
     margin: 15px;
   }
 }
@@ -139,14 +141,14 @@ section.list-notes > div > div > p.txt-time {
     width: 12rem;
   }
 
-  section.list-notes {
+  section#list-notes {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
   }
 
-  section.list-notes > div.card {
+  section#list-notes > #card {
     width: 20vw !important;
     margin: 15px;
   }
