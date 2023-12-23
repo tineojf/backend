@@ -39,7 +39,7 @@ header > div > a > button > img {
   height: 30px;
 }
 
-header > div:nth-child(3){
+header > div:nth-child(3) {
   text-align: center;
 }
 
@@ -72,6 +72,10 @@ section.section-note > div {
 
 /* media query 768px */
 @media (min-width: 768px) {
+  body {
+    padding: 40px;
+  }
+
   header {
     flex-direction: row;
     justify-content: space-between;
