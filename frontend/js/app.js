@@ -21,12 +21,12 @@ async function getNotes() {
 }
 
 async function postNotes() {
-  const noteContent = document.getElementById('txtarea-createNote').value;
-  const isArchive = document.getElementById('cbox-createNote').checked;
+  const noteContent = document.getElementById('txtarea-createNote');
+  const isArchive = document.getElementById('cbox-createNote');
 
   const body = {
-    description: noteContent,
-    isArchive: isArchive,
+    description: noteContent.value,
+    isArchive: isArchive.checked,
   };
 
   try {
@@ -42,6 +42,9 @@ async function postNotes() {
     }
 
     const note = await response.json();
+    noteContent.value = '';
+    isArchive.checked = false;
+
     return note;
   }
   catch (error) {
