@@ -22,7 +22,6 @@ async function getNotes() {
 async function postNotes() {
   const noteContent = document.getElementById('txtarea-createNote').value;
   const isArchive = document.getElementById('cbox-createNote').checked;
-  console.log(noteContent, isArchive)
 
   const body = {
     description: noteContent,
@@ -36,7 +35,6 @@ async function postNotes() {
         'Content-Type': 'application/json',
       }, body: JSON.stringify(body),
     });
-    console.log(body)
 
     if (!response.ok) {
       throw new Error(`Error en la solicitud: ${response.status}`);
@@ -65,7 +63,6 @@ async function deleteNotes(id) {
     }
 
     const responseBody = await response.json();
-    console.log(responseBody);
 
     return responseBody;
   } catch (error) {
@@ -110,7 +107,6 @@ btnCreateNote.addEventListener('click', async (event) => {
 
   try {
     const note = await postNotes();
-    console.log(note);
     main();
   } catch (error) {
     console.error('Error al crear nota:', error);
@@ -137,7 +133,6 @@ function asignarEventosABotones() {
 
       try {
         const id = e.target.id.split('-')[1];
-        console.log(id);
         await deleteNotes(id);
         main();
       } catch (error) {
