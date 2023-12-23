@@ -87,7 +87,11 @@ section.list-notes > div > div > div > a:hover {
 }
 
 section.list-notes > div > div > div > a.btn-update {
-  color: #29362c;
+  color: #000;
+}
+
+section.list-notes > div > div > div > a.btn-archive {
+  color: #3f6247;
 }
 
 section.list-notes > div > div > div > a.btn-delete {

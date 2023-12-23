@@ -45,6 +45,9 @@ async function main() {
             Updated At: ${dateConverter(nota.createdAt)}
           </p>
           <div>
+            <a href="" class="card-link btn-archive" id="btnArchive-${nota.id}"
+            >Archive</a
+            >
             <a href="" class="card-link btn-update" id="btnUpdate-${nota.id}"
               >Update</a
             >
