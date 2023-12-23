@@ -23,17 +23,14 @@ header {
 }
 
 header > h1 {
-  margin-bottom: 10px;
   text-transform: uppercase;
 }
 
 header > div > button {
-  width: 9rem;
-  margin: 0 10px;
 }
 
-header > div > button.btn-secondary {
-  background-color: #373636;
+header > div > a > button.btn-back {
+  background-color: #4d0303bb;
 }
 
 section.list-notes {
@@ -45,114 +42,4 @@ section.list-notes {
   align-content: center;
 
   margin: 60px;
-}
-
-section#list-notes > div {
-  background-color: var(--primary-color);
-}
-
-section#list-notes > #card {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: stretch;
-  align-content: stretch;
-
-  margin: 15px auto;
-  padding: 15px;
-
-  background-color: var(--primary-color);
-  border: none;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-
-section.list-notes > div > div > p {
-  text-align: justify;
-}
-
-section.list-notes > div > div > div {
-  margin-top: 20px;
-  text-align: right;
-}
-
-section.list-notes > div > div > div a {
-  text-decoration: none;
-  font-weight: bold;
-  text-align: right;
-}
-section.list-notes > div > div > div > a:hover {
-  text-decoration: underline;
-}
-
-section.list-notes > div > div > div > a.btn-update {
-  color: #000;
-}
-
-section.list-notes > div > div > div > a.btn-archive {
-  color: #3f6247;
-}
-
-section.list-notes > div > div > div > a.btn-delete {
-  color: #ec2323;
-}
-
-section.list-notes > div > div > p.txt-time {
-  font-size: 0.8rem;
-  text-align: left;
-  text-transform: lowercase;
-}
-
-@media (min-width: 768px) {
-  body {
-    padding: 50px;
-  }
-  header {
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-  }
-
-  header > div > button {
-    width: 12rem;
-  }
-
-  section#list-notes {
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  section#list-notes > .card {
-    margin: 15px;
-  }
-}
-
-/* media query min 1024 */
-@media (min-width: 1024px) {
-  body {
-    padding: 50px;
-  }
-  header {
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-  }
-
-  header > div > button {
-    width: 12rem;
-  }
-
-  section#list-notes {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-  }
-
-  section#list-notes > #card {
-    width: 20vw !important;
-    margin: 15px;
-  }
 }

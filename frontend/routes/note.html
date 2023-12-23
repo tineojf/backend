@@ -16,37 +16,85 @@
   </head>
   <body>
     <header>
-      <h1 class="h1-title-note">Note #0000</h1>
       <div>
-        <a href="../../index.html">
-          <button type="button" class="btn btn-secondary btn-archived">
-            Back to All Notes
-          </button></a
+        <a href="../../index.html"
+          ><button type="button" class="btn btn-secondary btn-back"><</button>
+        </a>
+      </div>
+
+      <h1 class="h1-title-note">Note #0000</h1>
+
+      <div>
+        <button
+          type="button"
+          class="btn btn-secondary btn-archived"
+          id="btnArchive-${nota.id}"
         >
+          Archive
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-warning btn-update"
+          id="btnUpdate-${nota.id}"
+        >
+          Update
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-danger btn-delete"
+          id="btnDelete-${nota.id}"
+        >
+          Delete
+        </button>
       </div>
     </header>
 
-    <section class="list-notes" id="list-notes">
-      <div class="card" style="width: 18rem" id="card">
+    <section class="section-note" id="section-note">
+      <div class="card">
         <div class="card-body">
-          <p class="card-text">${nota.description}</p>
+          <p>${nota.description}</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
           <p class="card-subtitle mb-2 text-muted txt-time">
             Created At: ${dateConverter(nota.createdAt)}
           </p>
           <p class="card-subtitle mb-2 text-muted txt-time">
             Updated At: ${dateConverter(nota.createdAt)}
           </p>
-          <div>
-            <a href="" class="card-link btn-archive" id="btnArchive-${nota.id}"
-              >Archive</a
-            >
-            <a href="" class="card-link btn-update" id="btnUpdate-${nota.id}"
-              >Update</a
-            >
-            <a href="" class="card-link btn-delete" id="btnDelete-${nota.id}"
-              >Delete</a
-            >
-          </div>
+          <p>Archive note?: ${(nota.isArchive) ? 'Yes' : 'No'}</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            id="btnArchive-${nota.id}"
+          >
+            Archive
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-warning"
+            id="btnUpdate-${nota.id}"
+          >
+            Update
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-danger"
+            id="btnDelete-${nota.id}"
+          >
+            Delete
+          </button>
         </div>
       </div>
     </section>
@@ -57,6 +105,6 @@
       crossorigin="anonymous"
     ></script>
 
-    <script type="module" src="../js/noteDetail.js"></script>
+    <!-- <script type="module" src="../js/noteDetail.js"></script> -->
   </body>
 </html>
