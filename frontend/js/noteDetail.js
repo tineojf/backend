@@ -37,18 +37,19 @@ async function main() {
     const notaHTML = `
       <div class="card">
         <div class="card-body">
-          <p><strong>Content:</strong></p>
+          <p><strong>Content</strong></p>
           <p id="txt-note">${nota.description}</p>
         </div>
       </div>
 
       <div class="card">
         <div class="card-body">
+        <p><strong>Information</strong></p>
           <p class="card-subtitle mb-2 text-muted txt-time">
-            Created At: ${dateConverter(nota.createdAt)}
+            Created at: ${dateConverter(nota.createdAt)}
           </p>
           <p class="card-subtitle mb-2 text-muted txt-time">
-            Updated At: ${dateConverter(nota.createdAt)}
+            Updated at: ${dateConverter(nota.createdAt)}
           </p>
           <p>${(nota.isArchive) ? 'Archive note' : 'Archived note'}</p>
         </div>

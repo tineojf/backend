@@ -39,8 +39,12 @@ header > div > a > button > img {
   height: 30px;
 }
 
+header > div:nth-child(3){
+  text-align: center;
+}
+
 header > div:nth-child(3) > button {
-  margin: 0 8px;
+  margin: 8px;
 }
 
 section.section-note {
@@ -100,6 +104,6 @@ section.section-note > div {
     align-items: stretch;
     align-content: stretch;
 
-    margin: 0 20px;
+    width: 40%;
   }
 }
