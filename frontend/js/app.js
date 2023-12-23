@@ -66,7 +66,7 @@ async function main() {
             </p>
             <p class="card-subtitle mb-2 text-muted txt-time">${dateConverter(nota.createdAt)}</p>
             <div>
-              <a href="#" class="card-link btn-archive">More</a>
+              <a href="#" class="card-link btn-more">More</a>
               <a href="#" class="card-link btn-delete">Delete</a>
             </div>
           </div>
