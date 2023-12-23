@@ -36,42 +36,6 @@ header > div > button.btn-secondary {
   background-color: #373636;
 }
 
-section.create-note {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-  align-content: stretch;
-
-  width: 70vw;
-  margin: 15px auto;
-  padding: 15px;
-
-  background-color: #e8e2e2;
-  border-radius: 20px;
-}
-section.create-note:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-}
-
-section.create-note > div:nth-child(2) {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-  align-content: stretch;
-}
-
-section.create-note > div:nth-child(2) > div > label {
-  margin-left: 5px;
-}
-
-section.create-note > div:nth-child(2) > button {
-  margin-top: 10px;
-}
-
 section.list-notes {
   display: flex;
   flex-direction: row;
@@ -119,7 +83,7 @@ section.list-notes > div > div > div > a:hover {
   text-decoration: underline;
 }
 
-section.list-notes > div > div > div > a.btn-more {
+section.list-notes > div > div > div > a.btn-edit {
   color: #29362c;
 }
 
@@ -145,25 +109,6 @@ section.list-notes > div > div > p.txt-time {
 
   header > div > button {
     width: 12rem;
-  }
-
-  section.create-note {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-    padding: 20px;
-    width: 60vw;
-    margin-top: 20px;
-  }
-
-  section.create-note > div:nth-child(2) {
-    margin-left: 50px;
-  }
-
-  section.create-note > div:nth-child(2) > button {
-    margin-top: 20px;
-    margin-left: 20px;
   }
 
   section.list-notes {
@@ -192,25 +137,6 @@ section.list-notes > div > div > p.txt-time {
 
   header > div > button {
     width: 12rem;
-  }
-
-  section.create-note {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-    padding: 20px;
-    width: 30vw;
-    margin-top: 20px;
-  }
-
-  section.create-note > div:nth-child(2) {
-    margin-left: 50px;
-  }
-
-  section.create-note > div:nth-child(2) > button {
-    margin-top: 20px;
-    margin-left: 20px;
   }
 
   section.list-notes {
