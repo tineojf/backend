@@ -87,14 +87,15 @@ async function main() {
             </p>
             <p class="card-subtitle mb-2 text-muted txt-time">${dateConverter(nota.createdAt)}</p>
             <div>
-              <a href="#" class="card-link btn-more">More</a>
-              <a href="#" class="card-link btn-delete" id="id-${nota.id}">Delete</a>
+              <a href="/frontend/routes/note.html" class="card-link btn-more" id="btnMore-${nota.id}">More</a>
+              <a href="" class="card-link btn-delete" id="btnDelete-${nota.id}">Delete</a>
             </div>
           </div>
         </div>
       `;
 
       listaNotes.innerHTML += notaHTML;
+      asignarEventosABotones2();
       asignarEventosABotones();
     });
   } catch (error) {
@@ -115,6 +116,24 @@ btnCreateNote.addEventListener('click', async (event) => {
 });
 
 function asignarEventosABotones() {
+  const buttons2 = document.querySelectorAll('.btn-more');
+
+  buttons2.forEach(button => {
+    button.addEventListener('click', async (e) => {
+      e.preventDefault();
+
+      try {
+        const id = e.target.id.split('-')[1];
+        navigateToNotePage(id);
+      } catch (error) {
+        console.error('Error en la nota:', error);
+      }
+    });
+  });
+}
+
+
+function asignarEventosABotones2() {
   const buttons = document.querySelectorAll('.btn-delete');
 
   buttons.forEach(button => {
@@ -124,12 +143,17 @@ function asignarEventosABotones() {
       try {
         const id = e.target.id.split('-')[1];
         await deleteNotes(id);
+
         main();
       } catch (error) {
         console.error('Error al eliminar nota:', error);
       }
     });
   });
+}
+
+function navigateToNotePage(noteId) {
+  window.location.href = `/frontend/routes/note.html?id=${noteId}`;
 }
 
 main();
