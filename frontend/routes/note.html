@@ -17,8 +17,10 @@
   <body>
     <header>
       <div>
-        <a href="../../index.html"
-          ><button type="button" class="btn btn-secondary btn-back"><</button>
+        <a href="../../index.html">
+          <button type="button" class="btn btn-secondary btn-back">
+            <img src="../assets/home.png" alt="home.png" />
+          </button>
         </a>
       </div>
 
@@ -27,7 +29,7 @@
       <div>
         <button
           type="button"
-          class="btn btn-secondary btn-archived"
+          class="btn btn-success btn-archived"
           id="btnArchive-${nota.id}"
         >
           Archive
@@ -35,7 +37,7 @@
 
         <button
           type="button"
-          class="btn btn-warning btn-update"
+          class="btn btn-primary btn-update"
           id="btnUpdate-${nota.id}"
         >
           Update
@@ -67,34 +69,6 @@
             Updated At: ${dateConverter(nota.createdAt)}
           </p>
           <p>Archive note?: ${(nota.isArchive) ? 'Yes' : 'No'}</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-body">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            id="btnArchive-${nota.id}"
-          >
-            Archive
-          </button>
-
-          <button
-            type="button"
-            class="btn btn-warning"
-            id="btnUpdate-${nota.id}"
-          >
-            Update
-          </button>
-
-          <button
-            type="button"
-            class="btn btn-danger"
-            id="btnDelete-${nota.id}"
-          >
-            Delete
-          </button>
         </div>
       </div>
     </section>

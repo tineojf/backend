@@ -24,13 +24,25 @@ header {
 
 header > h1 {
   text-transform: uppercase;
+  margin: 10px 0;
 }
 
-header > div > button {
+header > div {
+  margin: 8px 0;
 }
 
 header > div > a > button.btn-back {
-  background-color: #4d0303bb;
+  background-color: #e4e4e4;
+  border: none;
+}
+
+header > div > a > button > img {
+  width: 30px;
+  height: 30px;
+}
+
+header > div:nth-child(3) > button {
+  margin: 0 8px;
 }
 
 section.list-notes {
