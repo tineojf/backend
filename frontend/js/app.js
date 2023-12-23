@@ -1,4 +1,5 @@
 import { API_URL } from './url.js';
+import { dateConverter } from './utils.js';
 
 const API_NOTES = API_URL + 'notes/';
 const listaNotes = document.getElementById('list-notes');
@@ -112,17 +113,6 @@ btnCreateNote.addEventListener('click', async (event) => {
     console.error('Error al crear nota:', error);
   }
 });
-
-function dateConverter(fechaISO) {
-  const dateUTC = new Date(fechaISO);
-
-  const dateLocal = dateUTC.toLocaleDateString();
-  const hourLocal = dateUTC.toLocaleTimeString();
-
-  const formatedDate = `${dateLocal} ${hourLocal}`;
-
-  return formatedDate;
-}
 
 function asignarEventosABotones() {
   const buttons = document.querySelectorAll('.btn-delete');
