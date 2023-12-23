@@ -6,10 +6,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-button.btn-primary {
-  background-color: #1a3993;
+  /* background-color: #ababab; */
 }
 
 header {
@@ -19,6 +16,7 @@ header {
   justify-content: center;
   align-items: center;
   align-content: stretch;
+
   padding: 15px;
 }
 
@@ -45,13 +43,25 @@ header > div:nth-child(3) > button {
   margin: 0 8px;
 }
 
-section.list-notes {
+section.section-note {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  align-content: center;
+  align-items: stretch;
+  align-content: stretch;
 
-  margin: 60px;
+  margin: 20px;
+}
+
+section.section-note > div {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  align-content: stretch;
+
+  margin: 10px;
+  border-radius: 10px;
 }
