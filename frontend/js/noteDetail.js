@@ -1,15 +1,16 @@
 import { API_URL } from './url.js';
 import { dateConverter } from './utils.js';
+const API_NOTES = API_URL + 'notes/';
 
 const urlParams = new URLSearchParams(window.location.search);
 const noteId = urlParams.get('id');
 
-const API_NOTES = API_URL + 'notes/';
-const listaNotes = document.getElementById('list-notes');
-
-const h1TitleNote = document.querySelectorAll('.h1-title-note');
-const btnArchive = document.querySelector('.btn-archive');
+const listaNotes = document.getElementById('section-note');
+const h1Title = document.getElementById('h1-note');
+const btnArchive = document.querySelector('.btn-archived');
 console.log(btnArchive);
+const btnUpdate = document.querySelector('.btn-update');
+const btnDelete = document.querySelector('.btn-delete');
 
 async function getNoteID(noteId) {
   try {
@@ -32,34 +33,32 @@ async function main() {
     const notes = await getNoteID(noteId);
     const nota = notes.note
 
-    h1TitleNote.forEach((h1) => {
-      h1.innerHTML = `Note #00${nota.id}`;
-    })
+    h1Title.innerText = `NOTE #0${(nota.id > 9) ? nota.id : '0' + nota.id}`;
 
     const notaHTML = `
       <div class="card">
-        <p class="card-text">${nota.description}</p>
-        <p class="card-subtitle mb-2 text-muted txt-time">
-          Created At: ${dateConverter(nota.createdAt)}
-        </p>
-        <p class="card-subtitle mb-2 text-muted txt-time">
-          Updated At: ${dateConverter(nota.createdAt)}
-        </p>
-        <p class="card-text txtArchive">Archive note?: ${(nota.isArchive) ? 'Yes' : 'No'}</p>
-        <div>
-          <a href="" class="card-link btn-archive" id="btnArchive-${nota.id}"
-          >Archive</a
-          >
-          <a href="" class="card-link btn-update" id="btnUpdate-${nota.id}"
-            >Update</a
-          >
-          <a href="" class="card-link btn-delete" id="btnDelete-${nota.id}"
-            >Delete</a
-          >
+        <div class="card-body">
+          <p><strong>Content:</strong></p>
+          <p id="txt-note">${nota.description}</p>
         </div>
       </div>
-      `;
 
+      <div class="card">
+        <div class="card-body">
+          <p class="card-subtitle mb-2 text-muted txt-time">
+            Created At: ${dateConverter(nota.createdAt)}
+          </p>
+          <p class="card-subtitle mb-2 text-muted txt-time">
+            Updated At: ${dateConverter(nota.createdAt)}
+          </p>
+          <p>Archive note?: ${(nota.isArchive) ? 'Yes' : 'No'}</p>
+        </div>
+      </div>
+    `;
+
+    btnArchive.classList.add(`btnArchive-${nota.id}`);
+    btnUpdate.classList.add(`btnUpdate-${nota.id}`);
+    btnDelete.classList.add(`btnDelete-${nota.id}`);
     listaNotes.innerHTML = notaHTML;
 
   } catch (error) {
@@ -67,15 +66,7 @@ async function main() {
   }
 }
 
-btnArchive.addEventListener('click', async (e) => {
-  e.preventDefault();
-
-  const notes = await updateNote();
-  console.log(notes);
-  main();
-});
-
-async function updateNote() {
+async function archiveNote() {
   try {
     const response = await fetch(API_NOTES + noteId, {
       method: 'PUT',
@@ -83,7 +74,7 @@ async function updateNote() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        description: document.querySelector('.card-text').value,
+        description: document.getElementById('txt-note').innerText,
         isArchive: true,
       }),
     });
@@ -100,4 +91,38 @@ async function updateNote() {
   }
 }
 
-main();
+
+document.addEventListener('DOMContentLoaded', () => {
+  btnArchive.addEventListener('click', async () => {
+    try {
+      await archiveNote();
+      window.location.reload();
+    } catch (error) {
+      console.error('Error al archivar la nota:', error);
+    }
+  });
+
+  btnDelete.addEventListener('click', async () => {
+    try {
+      const response = await fetch(API_NOTES + noteId, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error en la solicitud: ${response.status}`);
+      }
+
+      const notes = await response.json();
+      window.location.href = '../../index.html';
+      return notes;
+    } catch (error) {
+      console.error('Error al obtener notas:', error);
+      throw error;
+    }
+  });
+
+  main();
+});
