@@ -25,6 +25,22 @@ async function getNoteID(noteId) {
   }
 }
 
+async function updateArchiveNote(noteId) {
+  try {
+    const response = await fetch(API_NOTES + noteId);
+
+    if (!response.ok) {
+      throw new Error(`Error en la solicitud: ${response.status}`);
+    }
+
+    const notes = await response.json();
+    return notes;
+  } catch (error) {
+    console.error('Error al obtener notas:', error);
+    throw error;
+  }
+}
+
 async function main() {
   try {
     const notes = await getNoteID(noteId);
@@ -44,6 +60,7 @@ async function main() {
           <p class="card-subtitle mb-2 text-muted txt-time">
             Updated At: ${dateConverter(nota.createdAt)}
           </p>
+          <p class="card-text">Archive?: ${(nota.isArchive) ? 'Yes' : 'No'}</p>
           <div>
             <a href="" class="card-link btn-archive" id="btnArchive-${nota.id}"
             >Archive</a
@@ -64,5 +81,7 @@ async function main() {
     console.error('Error en la aplicación:', error);
   }
 }
+
+
 
 main();
