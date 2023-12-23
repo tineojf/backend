@@ -8,7 +8,6 @@ const noteId = urlParams.get('id');
 const listaNotes = document.getElementById('section-note');
 const h1Title = document.getElementById('h1-note');
 const btnArchive = document.querySelector('.btn-archived');
-console.log(btnArchive);
 const btnUpdate = document.querySelector('.btn-update');
 const btnDelete = document.querySelector('.btn-delete');
 
@@ -51,7 +50,7 @@ async function main() {
           <p class="card-subtitle mb-2 text-muted txt-time">
             Updated At: ${dateConverter(nota.createdAt)}
           </p>
-          <p>Archive note?: ${(nota.isArchive) ? 'Yes' : 'No'}</p>
+          <p>${(nota.isArchive) ? 'Archive note' : 'Archived note'}</p>
         </div>
       </div>
     `;

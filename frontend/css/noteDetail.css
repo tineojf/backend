@@ -65,3 +65,41 @@ section.section-note > div {
   margin: 10px;
   border-radius: 10px;
 }
+
+/* media query 768px */
+@media (min-width: 768px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: stretch;
+  }
+
+  header > h1 {
+    margin: 0;
+  }
+
+  header > div {
+    margin: 0;
+  }
+
+  header > div > a > button.btn-back {
+    margin: 0 8px;
+  }
+
+  section.section-note {
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    align-content: stretch;
+  }
+
+  section.section-note > div {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    align-content: stretch;
+
+    margin: 0 20px;
+  }
+}
