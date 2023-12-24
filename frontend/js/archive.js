@@ -20,6 +20,61 @@ async function getNotes() {
   }
 }
 
+async function postNotes() {
+  const noteContent = document.getElementById('txtarea-createNote');
+  const isArchive = document.getElementById('cbox-createNote');
+
+  const body = {
+    description: noteContent.value,
+    isArchive: isArchive.checked,
+  };
+
+  try {
+    const response = await fetch(API_NOTES, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      }, body: JSON.stringify(body),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error en la solicitud: ${response.status}`);
+    }
+
+    const note = await response.json();
+    noteContent.value = '';
+    isArchive.checked = false;
+
+    return note;
+  }
+  catch (error) {
+    console.error('Error al crear notas:', error);
+    throw error;
+  }
+}
+
+async function deleteNotes(id) {
+  try {
+    const response = await fetch(API_NOTES + id, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error en la solicitud: ${response.status}`);
+    }
+
+    const responseBody = await response.json();
+
+    return responseBody;
+  } catch (error) {
+    console.error('Error al eliminar notas:', error);
+    throw error;
+  }
+}
+
 async function main() {
   try {
     const notes = await getNotes();
@@ -43,10 +98,52 @@ async function main() {
       `;
 
       listaNotes.innerHTML += notaHTML;
+      asignarEventosABotones2();
+      asignarEventosABotones();
     });
   } catch (error) {
     console.error('Error en la aplicación:', error);
   }
+}
+
+function asignarEventosABotones() {
+  const buttons2 = document.querySelectorAll('.btn-more');
+
+  buttons2.forEach(button => {
+    button.addEventListener('click', async (e) => {
+      e.preventDefault();
+
+      try {
+        const id = e.target.id.split('-')[1];
+        navigateToNotePage(id);
+      } catch (error) {
+        console.error('Error en la nota:', error);
+      }
+    });
+  });
+}
+
+function asignarEventosABotones2() {
+  const buttons = document.querySelectorAll('.btn-delete');
+
+  buttons.forEach(button => {
+    button.addEventListener('click', async (e) => {
+      e.preventDefault();
+
+      try {
+        const id = e.target.id.split('-')[1];
+        await deleteNotes(id);
+
+        main();
+      } catch (error) {
+        console.error('Error al eliminar nota:', error);
+      }
+    });
+  });
+}
+
+function navigateToNotePage(noteId) {
+  window.location.href = `/frontend/routes/note.html?id=${noteId}`;
 }
 
 main();
