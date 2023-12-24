@@ -1,7 +1,7 @@
 import { API_URL } from './url.js';
 import { dateConverter } from './utils.js';
 
-const API_NOTES = API_URL + 'notes/';
+const API_NOTES = API_URL + 'notes/notarchive';
 const listaNotes = document.getElementById('list-notes');
 
 async function getNotes() {

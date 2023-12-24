@@ -11,52 +11,19 @@
       crossorigin="anonymous"
     />
 
-    <link rel="stylesheet" href="./frontend/css/style.css" />
-    <link rel="icon" href="./frontend/assets/icon.png" />
+    <link rel="stylesheet" href="../css/archive.css" />
+    <link rel="icon" href="../assets/icon.png" />
   </head>
   <body>
     <header>
-      <h1>Notes</h1>
-      <div>
-        <a href="./frontend/routes/archive.html">
-          <button type="button" class="btn btn-secondary btn-archived">
-            Archived Notes
-          </button>
-        </a>
-        <button type="button" class="btn btn-primary btn-create">
-          Create Note
-        </button>
-      </div>
-    </header>
+      <h1>Archive notes</h1>
 
-    <section class="create-note">
-      <div class="mb-3">
-        <label for="txtarea-createNote" class="form-label"
-          >Create a new note</label
-        >
-        <textarea
-          class="form-control"
-          id="txtarea-createNote"
-          rows="3"
-        ></textarea>
-      </div>
-      <div class="mb-3">
-        <div>
-          <input
-            class="form-check-input"
-            type="checkbox"
-            value=""
-            id="cbox-createNote"
-          />
-          <label class="form-check-label" for="cbox-createNote">
-            Archive note?
-          </label>
-        </div>
-        <button type="button" class="btn btn-primary" id="btn-createNote">
-          Create
+      <a href="../../index.html">
+        <button type="button" class="btn btn-secondary btn-back">
+          <img src="../assets/home.png" alt="home.png" />
         </button>
-      </div>
-    </section>
+      </a>
+    </header>
 
     <section class="list-notes" id="list-notes">
       <div class="card" style="width: 18rem">
@@ -80,6 +47,6 @@
       crossorigin="anonymous"
     ></script>
 
-    <script type="module" src="./frontend/js/app.js"></script>
+    <script type="module" src="../js/archive.js"></script>
   </body>
 </html>
