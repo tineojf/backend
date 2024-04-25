@@ -3,12 +3,12 @@ const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
 module.exports.postNote = async (req, res) => {
-  const { description, isArchive } = req.body
+  const { description, isArchive, userId } = req.body
 
-  if (!description || isArchive === undefined) {
+  if (!description || !userId || isArchive === undefined) {
     return res.status(400).json({
       ok: false,
-      message: 'description and isArchive are required'
+      message: 'description, userId and isArchive are required'
     })
   }
 
@@ -16,7 +16,12 @@ module.exports.postNote = async (req, res) => {
     const elements = await prisma.notes.create({
       data: {
         description: description,
-        isArchive: isArchive
+        isArchive: isArchive,
+        user: {
+          connect: {
+            id: userId
+          }
+        }
       }
     })
 

@@ -1,4 +1,4 @@
-const { routerNotes } = require('./components/index');
+const { routerNotes, routerUsers } = require('./components/index');
 const express = require('express');
 const cors = require('cors');
 const app = express();
@@ -15,5 +15,6 @@ var corsOptions = {
 app.use(cors(corsOptions));
 
 app.use('/api/v1/notes', routerNotes);
+app.use('/api/v1/users', routerUsers);
 
 module.exports = app;
