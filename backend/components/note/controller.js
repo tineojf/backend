@@ -91,6 +91,39 @@ module.exports.getNoteID = async (req, res) => {
   }
 }
 
+module.exports.getNoteByUser = async (req, res) => {
+  const { userId } = req.params
+
+  try {
+    // SELECT * FROM NOTES WHERE USERID = userId
+    const elements = await prisma.notes.findMany({
+      where: {
+        userId: parseInt(userId, 10)
+      }
+    })
+
+    if (elements.length === 0) {
+      return res.status(404).json({
+        ok: false,
+        message: 'No notes found for this user'
+      })
+    }
+
+    res.status(200).json({
+      ok: true,
+      message: 'All notes retrieved',
+      notes: elements
+    })
+
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      message: 'Something went wrong',
+      error: error.message
+    })
+  }
+}
+
 module.exports.getNoteArchive = async (req, res) => {
   try {
     const elements = await prisma.notes.findMany({
