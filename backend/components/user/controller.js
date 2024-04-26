@@ -53,6 +53,52 @@ module.exports.getUsers = async (req, res) => {
   }
 }
 
+module.exports.login = async (req, res) => {
+  const { email, password } = req.body
+
+  if (!email || !password) {
+    return res.status(400).json({
+      ok: false,
+      message: 'email and password are required'
+    })
+  }
+
+  try {
+    const element = await prisma.users.findUnique({
+      where: {
+        email: email
+      }
+    })
+
+    if (element) {
+      if (element.password === password) {
+        res.status(200).json({
+          ok: true,
+          message: 'User logged in',
+          user: element
+        })
+      } else {
+        res.status(401).json({
+          ok: false,
+          message: 'Incorrect password'
+        })
+      }
+    } else {
+      res.status(404).json({
+        ok: false,
+        message: 'User not found'
+      })
+    }
+
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      message: 'Something went wrong',
+      error: error.message
+    })
+  }
+}
+
 module.exports.getUserID = async (req, res) => {
   const { id } = req.params
 
