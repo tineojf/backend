@@ -1,0 +1,7 @@
+- descargar repo
+- npm install
+- crear contenedor docker (p:9000 + database frontend)
+  docker run -d -p 9000:3306 -e MYSQL_ROOT_PASSWORD=root --name frontend mysql
+- crear .env
+- npx prisma db push (crea tablas en mysql)
+- npm run dev
